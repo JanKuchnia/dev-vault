@@ -14,10 +14,42 @@
     <!-- Navigation (same as index.html, but update links to .html files) -->
     <!-- ... existing navigation ... -->
 
-    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Documentation</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Developer documentation will be available here soon.</p>
-        <i class="fas fa-book text-purple-500 text-6xl animate-pulse"></i>
+    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh]">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row gap-8">
+            <aside class="md:w-1/4 mb-8 md:mb-0">
+                <nav class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6">
+                    <ul class="space-y-4">
+                        <li><a href="#intro" class="text-blue-500 font-bold">Introduction</a></li>
+                        <li><a href="#getting-started" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">Getting Started</a></li>
+                        <li><a href="#api" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">API Reference</a></li>
+                        <li><a href="#faq" class="text-gray-700 dark:text-gray-300 hover:text-blue-500">FAQ</a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main class="md:w-3/4">
+                <section id="intro" class="mb-12">
+                    <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">DevVault Documentation</h1>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">Welcome to the DevVault docs! Here you'll find everything you need to get started and make the most of your developer portfolio.</p>
+                </section>
+                <section id="getting-started" class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Getting Started</h2>
+                    <ol class="list-decimal list-inside text-gray-600 dark:text-gray-300 space-y-2">
+                        <li>Sign up for a DevVault account.</li>
+                        <li>Connect your GitHub to import projects.</li>
+                        <li>Customize your profile and select featured projects.</li>
+                        <li>Share your portfolio link with the world!</li>
+                    </ol>
+                </section>
+                <section id="api" class="mb-12">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">API Reference</h2>
+                    <p class="text-gray-600 dark:text-gray-300">API documentation coming soon.</p>
+                </section>
+                <section id="faq">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">FAQ</h2>
+                    <p class="text-gray-600 dark:text-gray-300">Frequently asked questions will be listed here.</p>
+                </section>
+            </main>
+        </div>
     </div>
 
     <!-- Footer (same as index.html, but update links to .html files) -->

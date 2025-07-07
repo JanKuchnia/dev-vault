@@ -14,10 +14,31 @@
     <!-- Navigation (same as index.html, but update links to .html files) -->
     <!-- ... existing navigation ... -->
 
-    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] flex flex-col items-center justify-center">
-        <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Contact</h1>
-        <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Get in touch with us. Contact form coming soon!</p>
-        <i class="fas fa-envelope text-blue-500 text-6xl animate-pulse"></i>
+    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh]">
+        <div class="max-w-2xl mx-auto">
+            <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">Contact Us</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 text-center">We'd love to hear from you! Fill out the form below or reach us at <a href="mailto:support@devvault.app" class="text-blue-500 hover:underline">support@devvault.app</a>.</p>
+            <form class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-8 space-y-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                    <input type="text" class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" placeholder="Your Name">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                    <input type="email" class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" placeholder="you@example.com">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                    <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" rows="4" placeholder="How can we help?"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md font-medium transition-colors">Send Message</button>
+            </form>
+            <div class="mt-8 text-center text-gray-500 dark:text-gray-400">
+                <div>DevVault Inc.</div>
+                <div>123 Developer Lane, Remote City, World</div>
+                <div>support@devvault.app</div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer (same as index.html, but update links to .html files) -->
