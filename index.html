@@ -7,6 +7,17 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="devvault.css">
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
+    </style>
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
     <!-- Navigation -->
@@ -57,7 +68,7 @@
     <!-- Hero Section -->
     <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
-            <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-24 items-center">
                 <div class="mb-12 lg:mb-0 text-center lg:text-left">
                     <h1 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
                         Showcase Your Developer Journey
@@ -257,7 +268,7 @@
                     
                     <!-- Step 2 -->
                     <div class="relative flex flex-col lg:flex-row items-center">
-                        <div class="lg:w-1/2 lg:pl-12 mb-8 lg:mb-0 order-2 lg:order-1">
+                        <div class="lg:w-1/2 lg:pr-12  mb-8 lg:mb-0 order-2 lg:order-1">
                             <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-slate-700 p-6">
                                 <div class="flex items-center mb-4">
                                     <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub" class="w-10 h-10 mr-3">
@@ -271,7 +282,7 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="lg:w-1/2 lg:pr-12 order-1 lg:order-2 text-center lg:text-left">
+                        <div class="lg:w-1/2 lg:pl-12 order-1 lg:order-2 text-center lg:text-left">
                             <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white mb-4 lg:mr-auto">
                                 <span class="text-xl font-bold">2</span>
                             </div>
@@ -325,7 +336,7 @@
                     
                     <!-- Step 4 -->
                     <div class="relative flex flex-col lg:flex-row items-center">
-                        <div class="lg:w-1/2 lg:pl-12 mb-8 lg:mb-0 order-2 lg:order-1">
+                        <div class="lg:w-1/2 lg:pr-12 mb-8 lg:mb-0 order-2 lg:order-1">
                             <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border border-gray-200 dark:border-slate-700">
                                 <div class="bg-gray-100 dark:bg-slate-700 px-4 py-3 flex items-center justify-between">
                                     <div class="text-sm font-medium text-gray-900 dark:text-white">
@@ -350,7 +361,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="lg:w-1/2 lg:pr-12 order-1 lg:order-2 text-center lg:text-left">
+                        <div class="lg:w-1/2 lg:pl-12 order-1 lg:order-2 text-center lg:text-left">
                             <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-blue-500 text-white mb-4 lg:mr-auto">
                                 <span class="text-xl font-bold">4</span>
                             </div>
@@ -440,6 +451,64 @@
                         <i class="fas fa-star text-yellow-400"></i>
                         <i class="fas fa-star-half-alt text-yellow-400"></i>
                     </div>
+                </div>
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-red-500 flex items-center justify-center text-white text-xl font-bold">
+                            AK
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Aisha Khan</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">Backend Developer at Cloudify</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "DevVault made it easy to present my open source work. Recruiters loved the clean layout and analytics!"
+                    </p>
+                    <div class="mt-4 flex space-x-1">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-green-500 flex items-center justify-center text-white text-xl font-bold">
+                            JP
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Julia Petrova</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">Freelance Web Designer</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        "I landed three new clients after sharing my DevVault portfolio. The PDF export is a game changer!"
+                    </p>
+                    <div class="mt-4 flex space-x-1">
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star text-yellow-400"></i>
+                        <i class="fas fa-star-half-alt text-yellow-400"></i>
+                    </div>
+                </div>
+                <!-- Case Study Card -->
+                <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-lg border-2 border-blue-500">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold">
+                            AC
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="font-bold text-gray-900 dark:text-white">Acme Corp Case Study</h4>
+                            <p class="text-gray-600 dark:text-gray-300 text-sm">Company Portfolio Rollout</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 mb-2">
+                        Acme Corp used DevVault to launch 50+ developer portfolios for their engineering team. The result: improved team visibility, faster hiring, and a 30% increase in inbound job applications.
+                    </p>
+                    <div class="text-blue-500 font-bold">"DevVault helped us showcase our engineering culture and attract top talent."</div>
                 </div>
             </div>
         </div>
@@ -783,6 +852,18 @@
             });
         }
         setActiveNavLinks();
+
+        // Fade-in on scroll
+        function revealOnScroll() {
+            document.querySelectorAll('.fade-in').forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 60) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('DOMContentLoaded', revealOnScroll);
     </script>
 </body>
 </html>

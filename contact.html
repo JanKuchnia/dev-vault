@@ -24,17 +24,26 @@
             outline: 2px solid #fbbf24;
             box-shadow: 0 0 0 2px #fbbf24;
         }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
     <!-- Navigation (same as index.html, but update links to .html files) -->
     <!-- ... existing navigation ... -->
 
-    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh]">
+    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] fade-in">
         <div class="max-w-2xl mx-auto">
             <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">Contact Us</h1>
             <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 text-center">We'd love to hear from you! Fill out the form below or reach us at <a href="mailto:support@devvault.app" class="text-blue-500 hover:underline">support@devvault.app</a>.</p>
-            <form class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-8 space-y-6" role="form" aria-label="Contact Form">
+            <form class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-8 space-y-6" role="form" aria-label="Contact Form" id="contactForm">
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
                     <input type="text" class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" placeholder="Your Name" aria-label="Name">
@@ -62,5 +71,43 @@
 
     <!-- Modals and Scripts (copy from index.html) -->
     <!-- ... existing modals and scripts ... -->
+
+    <script>
+    // Fake success toast for contact form
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Reset form
+            contactForm.reset();
+            // Show toast
+            showToast('Message sent! (Demo only, not actually delivered)');
+        });
+    }
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center z-50';
+        toast.innerHTML = `
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>${message}</span>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+    // Fade-in on scroll
+    function revealOnScroll() {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+    </script>
 </body>
 </html> 

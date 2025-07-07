@@ -8,16 +8,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ... existing styles from index.html ... */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
     <!-- Navigation (same as index.html, but update links to .html files) -->
     <!-- ... existing navigation ... -->
 
-    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] flex flex-col items-center justify-center">
+    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] flex flex-col items-center justify-center fade-in">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-4">Blog</h1>
         <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">Our latest news and articles will be posted here soon.</p>
         <i class="fas fa-blog text-pink-500 text-6xl animate-pulse"></i>
+    </div>
+
+    <div class="mb-8 flex justify-center">
+        <input id="blogSearch" type="text" placeholder="Search blog..." class="w-full max-w-md px-4 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" aria-label="Search blog">
     </div>
 
     <!-- Footer (same as index.html, but update links to .html files) -->
@@ -25,5 +38,48 @@
 
     <!-- Modals and Scripts (copy from index.html) -->
     <!-- ... existing modals and scripts ... -->
+
+    <script>
+    // Blog search
+    const blogSearch = document.getElementById('blogSearch');
+    const blogPosts = document.querySelectorAll('.blog-post-card');
+    blogSearch.addEventListener('input', function() {
+        const term = blogSearch.value.toLowerCase();
+        let anyVisible = false;
+        blogPosts.forEach(post => {
+            const text = post.textContent.toLowerCase();
+            if (text.includes(term)) {
+                post.style.display = '';
+                anyVisible = true;
+            } else {
+                post.style.display = 'none';
+            }
+        });
+        let noResults = document.getElementById('noBlogResults');
+        if (!anyVisible) {
+            if (!noResults) {
+                noResults = document.createElement('div');
+                noResults.id = 'noBlogResults';
+                noResults.className = 'text-center text-gray-500 dark:text-gray-400 mt-8';
+                noResults.textContent = 'No blog posts found.';
+                blogPosts[0].parentNode.appendChild(noResults);
+            }
+        } else if (noResults) {
+            noResults.remove();
+        }
+    });
+
+    // Fade-in on scroll
+    function revealOnScroll() {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+    </script>
 </body>
 </html> 

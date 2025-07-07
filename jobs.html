@@ -24,13 +24,22 @@
             outline: 2px solid #fbbf24;
             box-shadow: 0 0 0 2px #fbbf24;
         }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: none;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
     <!-- Navigation (same as index.html, but update links to .html files) -->
     <!-- ... existing navigation ... -->
 
-    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh]">
+    <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] fade-in">
         <div class="max-w-4xl mx-auto">
             <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-6 text-center">Join Our Team</h1>
             <p class="text-lg text-gray-600 dark:text-gray-300 mb-8 text-center">We're looking for passionate people to help us build the future of developer portfolios.</p>
@@ -61,6 +70,91 @@
     <!-- ... existing footer ... -->
 
     <!-- Modals and Scripts (copy from index.html) -->
-    <!-- ... existing modals and scripts ... -->
+    <div id="applyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white dark:bg-slate-800 rounded-xl shadow-xl max-w-md w-full mx-4 relative overflow-hidden">
+            <button id="closeApplyModal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" aria-label="Close application form">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="px-8 py-10">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Apply for this Job</h3>
+                    <p class="text-gray-600 dark:text-gray-300">Fill out the form below to apply. (Demo only)</p>
+                </div>
+                <form id="applyForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Name</label>
+                        <input type="text" class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" required aria-label="Name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                        <input type="email" class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" required aria-label="Email">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Message</label>
+                        <textarea class="w-full px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-700 dark:text-white" rows="3" required aria-label="Message"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md font-medium transition-colors" aria-label="Submit Application">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+    // ... existing code ...
+    // Apply Now modal logic
+    const applyModal = document.getElementById('applyModal');
+    const closeApplyModal = document.getElementById('closeApplyModal');
+    const applyForm = document.getElementById('applyForm');
+    const applyButtons = document.querySelectorAll('button[aria-label^="Apply for "]');
+    applyButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            applyModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+    if (closeApplyModal) closeApplyModal.addEventListener('click', () => {
+        applyModal.classList.add('hidden');
+        document.body.style.overflow = '';
+    });
+    window.addEventListener('click', (e) => {
+        if (e.target === applyModal) {
+            applyModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    });
+    if (applyForm) {
+        applyForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            applyForm.reset();
+            applyModal.classList.add('hidden');
+            document.body.style.overflow = '';
+            showToast('Application submitted! (Demo only, not actually delivered)');
+        });
+    }
+    function showToast(message) {
+        const toast = document.createElement('div');
+        toast.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg flex items-center z-50';
+        toast.innerHTML = `
+            <i class="fas fa-check-circle mr-2"></i>
+            <span>${message}</span>
+        `;
+        document.body.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('opacity-0', 'transition-opacity', 'duration-300');
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+    // Fade-in on scroll
+    function revealOnScroll() {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 60) {
+                el.classList.add('visible');
+            }
+        });
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('DOMContentLoaded', revealOnScroll);
+    // ... existing code ...
+    </script>
 </body>
 </html> 
