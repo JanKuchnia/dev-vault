@@ -6,9 +6,7 @@
     <title>Examples | DevVault</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* ... existing styles from index.html ... */
-    </style>
+    <link rel="stylesheet" href="devvault.css">
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
     <!-- Navigation (same as index.html, but update links to .html files) -->
@@ -40,6 +38,9 @@
                     <a href="#" class="text-blue-500 hover:text-blue-600 font-medium">View Portfolio</a>
                 </div>
             </div>
+            <div class="flex justify-center mt-12">
+                <button id="signUpHero" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-md font-bold transition-colors text-lg shadow-lg">Sign Up</button>
+            </div>
         </div>
     </div>
 
@@ -48,5 +49,26 @@
 
     <!-- Modals and Scripts (copy from index.html) -->
     <!-- ... existing modals and scripts ... -->
+
+    <button id="signUpFloating" class="fixed bottom-6 right-6 z-50 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-colors flex items-center space-x-2">
+        <i class="fas fa-user-plus"></i>
+        <span>Sign Up</span>
+    </button>
+    <script>
+    // Floating and hero CTA open sign up modal if present
+    function openSignUpModal() {
+        const signUpModal = document.getElementById('signUpModal');
+        if (signUpModal) {
+            signUpModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            window.location.href = 'index.html#signUpModal';
+        }
+    }
+    const signUpHero = document.getElementById('signUpHero');
+    const signUpFloating = document.getElementById('signUpFloating');
+    if (signUpHero) signUpHero.addEventListener('click', openSignUpModal);
+    if (signUpFloating) signUpFloating.addEventListener('click', openSignUpModal);
+    </script>
 </body>
 </html> 

@@ -6,122 +6,53 @@
     <title>DevVault | Developer Portfolio Platform</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        
-        .dark ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        .dark ::-webkit-scrollbar-thumb {
-            background: #475569;
-        }
-        
-        /* Smooth transitions for theme toggle */
-        .transition-bg {
-            transition: background-color 0.3s ease;
-        }
-        
-        /* Pulse animation for active elements */
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.5;
-            }
-        }
-        .animate-pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        /* Custom checkbox */
-        .custom-checkbox {
-            position: relative;
-            width: 20px;
-            height: 20px;
-            appearance: none;
-            -webkit-appearance: none;
-            background-color: #fff;
-            border: 2px solid #cbd5e1;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .dark .custom-checkbox {
-            background-color: #1e293b;
-            border-color: #475569;
-        }
-        .custom-checkbox:checked {
-            background-color: #3b82f6;
-            border-color: #3b82f6;
-        }
-        .custom-checkbox:checked::after {
-            content: "✓";
-            position: absolute;
-            color: white;
-            font-size: 12px;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        /* Loading spinner */
-        .spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: #fff;
-            animation: spin 1s ease-in-out infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-    </style>
+    <link rel="stylesheet" href="devvault.css">
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
     <!-- Navigation -->
-    <nav class="bg-white dark:bg-slate-800 shadow-sm fixed w-full z-10">
+    <nav class="bg-white dark:bg-slate-800 shadow-sm fixed w-full z-10" role="navigation" aria-label="Main Navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <i class="fas fa-code text-blue-500 text-2xl mr-2"></i>
-                        <span class="text-xl font-bold text-gray-800 dark:text-white">DevVault</span>
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-code text-blue-500 text-2xl mr-2"></i>
+                            <span class="text-xl font-bold text-gray-800 dark:text-white">DevVault</span>
+                        </a>
                     </div>
                 </div>
-                <div class="hidden md:ml-6 md:flex items-center space-x-8">
-                    <a href="features.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Features</a>
-                    <a href="pricing.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
-                    <a href="docs.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Docs</a>
+                <div class="hidden md:ml-6 md:flex items-center space-x-8" id="desktopNav" role="menubar" aria-label="Primary">
+                    <a href="features.html" role="menuitem" aria-current="page" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                    <a href="pricing.html" role="menuitem" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                    <a href="docs.html" role="menuitem" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Docs</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700" aria-label="Toggle dark mode">
                         <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
                     </button>
-                    <button id="loginBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                    <button id="loginBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors" aria-label="Sign In">
                         Sign In
                     </button>
-                    <button class="md:hidden text-gray-500 hover:text-gray-600 focus:outline-none">
+                    <button id="mobileMenuButton" class="md:hidden text-gray-500 hover:text-gray-600 focus:outline-none" aria-label="Open main menu" aria-controls="mobileNav" aria-expanded="false">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileNav" class="md:hidden fixed inset-0 z-40 bg-black bg-opacity-40 hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+        <div class="absolute top-0 right-0 w-3/4 max-w-xs h-full bg-white dark:bg-slate-800 shadow-lg p-6 flex flex-col space-y-6">
+            <button id="closeMobileMenu" class="self-end text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" aria-label="Close main menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="features.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium" role="menuitem">Features</a>
+            <a href="pricing.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium" role="menuitem">Pricing</a>
+            <a href="docs.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium" role="menuitem">Docs</a>
+            <a href="login.html" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium transition-colors" role="menuitem">Sign In</a>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <div class="pt-24 pb-12 px-4 sm:px-6 lg:px-8">
@@ -528,7 +459,7 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-white dark:bg-slate-800 pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+    <footer class="bg-white dark:bg-slate-800 pt-12 pb-6 px-4 sm:px-6 lg:px-8" role="contentinfo" aria-label="Footer">
         <div class="max-w-7xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
                 <div>
@@ -814,6 +745,44 @@
                 document.body.style.overflow = '';
             }
         });
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileNav = document.getElementById('mobileNav');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileNav.classList.remove('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        });
+        closeMobileMenu.addEventListener('click', () => {
+            mobileNav.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        });
+        window.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                mobileNav.classList.add('hidden');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Active link highlighting
+        function setActiveNavLinks() {
+            const path = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('#desktopNav a, #mobileNav a');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if ((path === 'index.html' && href === 'index.html') || (href !== 'index.html' && path === href)) {
+                    link.classList.add('bg-blue-100', 'dark:bg-blue-900', 'text-blue-700', 'dark:text-blue-300');
+                } else {
+                    link.classList.remove('bg-blue-100', 'dark:bg-blue-900', 'text-blue-700', 'dark:text-blue-300');
+                }
+            });
+        }
+        setActiveNavLinks();
     </script>
 </body>
 </html>

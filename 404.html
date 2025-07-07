@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | DevVault</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="/favicon.ico">
+    <style>
+        /* Custom scrollbar and other styles from index.html */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+        .dark ::-webkit-scrollbar-track { background: #1e293b; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+        .transition-bg { transition: background-color 0.3s ease; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .animate-pulse { animation: pulse 2s infinite; }
+    </style>
+</head>
+<body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
+    <!-- Navigation (copied from index.html) -->
+    <nav class="bg-white dark:bg-slate-800 shadow-sm fixed w-full z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <a href="index.html" class="flex items-center">
+                            <i class="fas fa-code text-blue-500 text-2xl mr-2"></i>
+                            <span class="text-xl font-bold text-gray-800 dark:text-white">DevVault</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex items-center space-x-8" id="desktopNav">
+                    <a href="features.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                    <a href="pricing.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                    <a href="docs.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">Docs</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-slate-700">
+                        <i class="fas fa-moon text-gray-700 dark:text-yellow-300"></i>
+                    </button>
+                    <button id="loginBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        Sign In
+                    </button>
+                    <button id="mobileMenuButton" class="md:hidden text-gray-500 hover:text-gray-600 focus:outline-none" aria-label="Open main menu" aria-controls="mobileNav" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Mobile menu -->
+    <div id="mobileNav" class="md:hidden fixed inset-0 z-40 bg-black bg-opacity-40 hidden" aria-hidden="true">
+        <div class="absolute top-0 right-0 w-3/4 max-w-xs h-full bg-white dark:bg-slate-800 shadow-lg p-6 flex flex-col space-y-6">
+            <button id="closeMobileMenu" class="self-end text-gray-500 hover:text-gray-700 dark:hover:text-gray-300" aria-label="Close main menu">
+                <i class="fas fa-times"></i>
+            </button>
+            <a href="features.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Features</a>
+            <a href="pricing.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Pricing</a>
+            <a href="docs.html" class="text-gray-900 dark:text-white hover:text-blue-500 px-3 py-2 rounded-md text-base font-medium">Docs</a>
+            <a href="login.html" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-base font-medium transition-colors">Sign In</a>
+        </div>
+    </div>
+    <!-- 404 Content -->
+    <div class="pt-32 pb-12 px-4 sm:px-6 lg:px-8 min-h-[60vh] flex flex-col items-center justify-center">
+        <div class="text-center">
+            <div class="text-8xl font-extrabold text-blue-500 mb-4 animate-pulse">404</div>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Oops! Page not found.</h1>
+            <p class="text-lg text-gray-600 dark:text-gray-300 mb-8">The page you're looking for doesn't exist or has been moved.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="index.html" class="bg-gray-200 dark:bg-slate-700 hover:bg-gray-300 dark:hover:bg-slate-600 text-gray-900 dark:text-white px-6 py-3 rounded-md font-medium transition-colors">Go Home</a>
+                <button id="signUp404" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-md font-medium transition-colors">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    <!-- Footer (copied from index.html) -->
+    <footer class="bg-white dark:bg-slate-800 pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Product</h5>
+                    <ul class="space-y-2">
+                        <li><a href="features.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Features</a></li>
+                        <li><a href="pricing.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Pricing</a></li>
+                        <li><a href="examples.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Examples</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Resources</h5>
+                    <ul class="space-y-2">
+                        <li><a href="documentation.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Documentation</a></li>
+                        <li><a href="guides.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Guides</a></li>
+                        <li><a href="blog.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Company</h5>
+                    <ul class="space-y-2">
+                        <li><a href="about.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">About</a></li>
+                        <li><a href="jobs.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Jobs</a></li>
+                        <li><a href="contact.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-sm font-semibold text-gray-900 dark:text-white uppercase tracking-wider mb-4">Connect</h5>
+                    <div class="flex space-x-4">
+                        <a href="https://twitter.com" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://github.com" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://discord.com" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 dark:border-slate-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <span class="text-gray-600 dark:text-gray-300 text-sm">
+                        © 2023 DevVault. All rights reserved.
+                    </span>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="privacy.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm">Privacy Policy</a>
+                    <a href="terms.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm">Terms of Service</a>
+                    <a href="cookies.html" class="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white text-sm">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Modals and Scripts (copied from index.html) -->
+    <script>
+        // Theme Toggle, Modal, Mobile Menu, and Active Link scripts from index.html
+        // ... (copy all relevant JS from index.html here) ...
+    </script>
+</body>
+</html> 

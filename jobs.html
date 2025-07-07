@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ... existing styles from index.html ... */
+        /* Focus states for accessibility */
+        a:focus, button:focus, input:focus, textarea:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+        .dark a:focus, .dark button:focus, .dark input:focus, .dark textarea:focus,
+        .dark a:focus-visible, .dark button:focus-visible, .dark input:focus-visible, .dark textarea:focus-visible {
+            outline: 2px solid #fbbf24;
+            box-shadow: 0 0 0 2px #fbbf24;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
@@ -23,19 +39,19 @@
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Frontend Engineer</h2>
                     <p class="text-gray-600 dark:text-gray-300 mb-2">Work with React, Tailwind, and modern web technologies to create beautiful user experiences.</p>
                     <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">Location: Remote</div>
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium">Apply Now</button>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium" aria-label="Apply for Frontend Engineer">Apply Now</button>
                 </div>
                 <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Backend Engineer</h2>
                     <p class="text-gray-600 dark:text-gray-300 mb-2">Help us scale our platform using Node.js, MongoDB, and cloud infrastructure.</p>
                     <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">Location: Remote</div>
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium">Apply Now</button>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium" aria-label="Apply for Backend Engineer">Apply Now</button>
                 </div>
                 <div class="bg-white dark:bg-slate-700 rounded-xl shadow-md p-6">
                     <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Product Designer</h2>
                     <p class="text-gray-600 dark:text-gray-300 mb-2">Design intuitive interfaces and help shape the look and feel of DevVault.</p>
                     <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">Location: Remote</div>
-                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium">Apply Now</button>
+                    <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md font-medium" aria-label="Apply for Product Designer">Apply Now</button>
                 </div>
             </div>
         </div>

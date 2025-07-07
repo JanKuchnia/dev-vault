@@ -8,6 +8,22 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* ... existing styles from index.html ... */
+        /* Focus states for accessibility */
+        a:focus, button:focus, input:focus, textarea:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+        .dark a:focus, .dark button:focus, .dark input:focus, .dark textarea:focus,
+        .dark a:focus-visible, .dark button:focus-visible, .dark input:focus-visible, .dark textarea:focus-visible {
+            outline: 2px solid #fbbf24;
+            box-shadow: 0 0 0 2px #fbbf24;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 dark:bg-slate-900 transition-bg">
@@ -42,6 +58,9 @@
                     </div>
                 </div>
             </div>
+            <div class="flex justify-center mt-12">
+                <button id="signUpHero" class="bg-blue-500 hover:bg-blue-600 text-white px-8 py-3 rounded-md font-bold transition-colors text-lg shadow-lg">Sign Up</button>
+            </div>
         </div>
     </div>
 
@@ -50,5 +69,27 @@
 
     <!-- Modals and Scripts (copy from index.html) -->
     <!-- ... existing modals and scripts ... -->
+
+    <button id="signUpFloating" class="fixed bottom-6 right-6 z-50 bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full font-bold shadow-lg transition-colors flex items-center space-x-2">
+        <i class="fas fa-user-plus"></i>
+        <span>Sign Up</span>
+    </button>
+
+    <script>
+    // Floating and hero CTA open sign up modal if present
+    function openSignUpModal() {
+        const signUpModal = document.getElementById('signUpModal');
+        if (signUpModal) {
+            signUpModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        } else {
+            window.location.href = 'index.html#signUpModal';
+        }
+    }
+    const signUpHero = document.getElementById('signUpHero');
+    const signUpFloating = document.getElementById('signUpFloating');
+    if (signUpHero) signUpHero.addEventListener('click', openSignUpModal);
+    if (signUpFloating) signUpFloating.addEventListener('click', openSignUpModal);
+    </script>
 </body>
 </html> 
