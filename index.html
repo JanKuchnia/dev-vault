@@ -726,14 +726,23 @@
         const loginModal = document.getElementById('loginModal');
         const closeModal = document.getElementById('closeModal');
         
+        function resetBodyOverflow() {
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflowX = 'hidden';
+        }
+        function restoreBodyOverflow() {
+            document.body.style.overflow = '';
+            document.documentElement.style.overflowX = '';
+        }
+        
         loginBtn.addEventListener('click', () => {
             loginModal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            resetBodyOverflow();
         });
         
         closeModal.addEventListener('click', () => {
             loginModal.classList.add('hidden');
-            document.body.style.overflow = '';
+            restoreBodyOverflow();
         });
         
         // Sign Up Modal Toggle
@@ -746,24 +755,25 @@
         heroSignUp.addEventListener('click', () => {
             signUpModal.classList.remove('hidden');
             loginModal.classList.add('hidden');
-            document.body.style.overflow = 'hidden';
+            resetBodyOverflow();
         });
         
         bottomSignUp.addEventListener('click', () => {
             signUpModal.classList.remove('hidden');
             loginModal.classList.add('hidden');
-            document.body.style.overflow = 'hidden';
+            resetBodyOverflow();
         });
         
         closeSignUpModal.addEventListener('click', () => {
             signUpModal.classList.add('hidden');
-            document.body.style.overflow = '';
+            restoreBodyOverflow();
         });
         
         switchToLogin.addEventListener('click', (e) => {
             e.preventDefault();
             signUpModal.classList.add('hidden');
             loginModal.classList.remove('hidden');
+            resetBodyOverflow();
         });
         
         // Simulate form submission
@@ -807,11 +817,11 @@
         window.addEventListener('click', (e) => {
             if (e.target === loginModal) {
                 loginModal.classList.add('hidden');
-                document.body.style.overflow = '';
+                restoreBodyOverflow();
             }
             if (e.target === signUpModal) {
                 signUpModal.classList.add('hidden');
-                document.body.style.overflow = '';
+                restoreBodyOverflow();
             }
         });
 
@@ -823,18 +833,18 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileNav.classList.remove('hidden');
             mobileMenuButton.setAttribute('aria-expanded', 'true');
-            document.body.style.overflow = 'hidden';
+            resetBodyOverflow();
         });
         closeMobileMenu.addEventListener('click', () => {
             mobileNav.classList.add('hidden');
             mobileMenuButton.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            restoreBodyOverflow();
         });
         window.addEventListener('click', (e) => {
             if (e.target === mobileNav) {
                 mobileNav.classList.add('hidden');
                 mobileMenuButton.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
+                restoreBodyOverflow();
             }
         });
 
